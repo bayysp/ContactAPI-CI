@@ -24,7 +24,10 @@ class Kontak extends REST_Controller{
 			$kontak = $this->db->get('telepon')->result();
 		}
 
-		$this->response($kontak, 200);
+		// $this->response($kontak, 200);
+		echo '<pre>';
+		print_r($kontak);
+		
 	}
 
 	function index_post(){
