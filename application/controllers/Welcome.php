@@ -21,7 +21,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
+		$kontak = $this->db->get('telepon')->result();
 
-		$this->load->view('welcome_message');
+		$this->load->view('welcome_message',array('kontak' => $kontak));
 	}
 }

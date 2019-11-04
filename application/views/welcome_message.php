@@ -34,7 +34,32 @@
         </table>
         <br>
         <a href="<?php echo base_url('index.php/kontak/index_get') ?>" method="get">Show All Data as JSON</a>
-        <a href="<?php echo base_url('index.php/kontak/view_data'); ?>">Show All Data as Tables</a>
+
+        <table border="1px">
+            <tr>
+                <td>No</td>
+                <td>ID</td>
+                <td>Nama</td>
+                <td>Nomor</td>
+                <td>Action</td>
+            </tr>
+            <?php
+            $no = 1;
+            foreach ($kontak as $data) {
+                ?>
+
+                <tr>
+                    <td><?php echo $no; $no++; ?></td>
+                    <td><?php echo $data->id; ?></td>
+                    <td><?php echo $data->nama; ?></td>
+                    <td><?php echo $data->nomor; ?></td>
+                    <td><a href="<?php echo base_url('index.php/kontak/index_delete?id=').$data->id; ?>">Hapus</a> <br> <br>
+                    <a href="<?php echo base_url('index.php/kontak/index_put?id=').$data->id; ?>">Edit</a></td>
+                </tr>
+
+            <?php } ?>
+        </table>
+
     </center>
 </body>
 

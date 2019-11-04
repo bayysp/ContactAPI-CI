@@ -26,7 +26,10 @@ class Kontak extends REST_Controller{
 
 		// $this->response($kontak, 200);
 		echo '<pre>';
-		print_r($kontak);
+		$json_string = json_encode($kontak, JSON_PRETTY_PRINT);
+		
+		echo $json_string;
+		
 		
 	}
 
@@ -47,11 +50,15 @@ class Kontak extends REST_Controller{
 	}
 
 	function index_put(){
-		$id = $this->put('id');
+		$id = $this->input->get('id');
+		// $id = $this->put('id');
 		$data = array(
-			'id'	=>	$this->put('id'),
-			'nama'	=>	$this->put('nama'),
-			'nomor'	=>	$this->put('nomor'),
+			// 'id'	=>	$this->put('id'),
+			'id' => $this->input->get('id'),
+			'nama' => $this->input->get('nama'),
+			'nomor' => $this->input->get('nomor')
+			// 'nama'	=>	$this->put('nama'),
+			// 'nomor'	=>	$this->put('nomor'),
 		);
 		
 		$this->db->where('id', $id);
@@ -66,7 +73,7 @@ class Kontak extends REST_Controller{
 	}
 
 	function index_delete(){
-		$id = $this->delete('id');
+		$id = $this->input->get('id');
 
 		$this->db->where('id', $id);
 		
